@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "275876785449",
+    "firebase_url": "https://camara-4a96c.firebaseio.com",
+    "project_id": "camara-4a96c",
+    "storage_bucket": "camara-4a96c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275876785449:android:c9726579fdc67073",
+        "android_client_info": {
+          "package_name": "i2t.icesi.aplicaciones20182"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275876785449-klhj3loqrbbk5jn9248fhqgh3rpsjl74.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "i2t.icesi.aplicaciones20182",
+            "certificate_hash": "a2f49a570a60674090799825709f511a78546538"
+          }
+        },
+        {
+          "client_id": "275876785449-5qnl2cgkmqltqglhs67uv18pqopsi6ic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAHIUqdMkXzNcoVzv4xgLOBdVjjfz4u9w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275876785449-5qnl2cgkmqltqglhs67uv18pqopsi6ic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275876785449:android:e173fa1977df99dd",
+        "android_client_info": {
+          "package_name": "i2t.icesi.camara"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275876785449-d2q9m24uup1d6sn8lqttfugqjnccc25m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "i2t.icesi.camara",
+            "certificate_hash": "a2f49a570a60674090799825709f511a78546538"
+          }
+        },
+        {
+          "client_id": "275876785449-5qnl2cgkmqltqglhs67uv18pqopsi6ic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAHIUqdMkXzNcoVzv4xgLOBdVjjfz4u9w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275876785449-5qnl2cgkmqltqglhs67uv18pqopsi6ic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
