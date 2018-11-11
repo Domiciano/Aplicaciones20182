@@ -1,14 +1,20 @@
 package i2t.icesi.aplicaciones20182;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -25,10 +31,12 @@ import i2t.icesi.aplicaciones20182.model.Comentario;
 public class Adaptador extends BaseAdapter{
     ArrayList<Comentario> comentarios;
     Context context;
+    FirebaseStorage storage;
 
     public Adaptador(Context context){
         this.context = context;
         comentarios = new ArrayList<>();
+        storage = FirebaseStorage.getInstance();
     }
 
     @Override
@@ -49,9 +57,14 @@ public class Adaptador extends BaseAdapter{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View renglon = inflater.inflate(R.layout.renglon,null);
-        TextView tv_comentario = renglon.findViewById(R.id.tv_comentario);
-        Button like_btn = renglon.findViewById(R.id.like_btn);
+
+        //Aprovechamos el caché del ListView
+        if(convertView == null) {
+            convertView = inflater.inflate(R.layout.renglon, null);
+        }
+
+        TextView tv_comentario = convertView.findViewById(R.id.tv_comentario);
+        Button like_btn = convertView.findViewById(R.id.like_btn);
         like_btn.setText(""+comentarios.get(position).getLikes().size());
 
         tv_comentario.setText(comentarios.get(position).getTexto());
@@ -63,7 +76,19 @@ public class Adaptador extends BaseAdapter{
             }
         });
 
-        return renglon;
+        final ImageView renglon_img = convertView.findViewById(R.id.renglon_img);
+        //Cargar las imagenes
+        StorageReference ref = storage.getReference().child("comments")
+                .child(comentarios.get(position).getId());
+        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(context).load(uri).into(renglon_img);
+                notifyDataSetChanged();
+            }
+        });
+
+        return convertView;
     }
 
     public void agregarComentario(Comentario c) {
