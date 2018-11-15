@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -124,13 +127,12 @@ public class Main extends AppCompatActivity {
             public void onClick(View view) {
                 String comentario = et_comentario.getText().toString();
                 if(comentario.isEmpty()) return;
-                DatabaseReference reference = db.getReference().child("comentarios").push();
+                final DatabaseReference reference = db.getReference().child("comentarios").push();
                 String id_comment = reference.getKey();
 
-                Comentario c = new Comentario();
+                final Comentario c = new Comentario();
                 c.setId(id_comment);
                 c.setTexto(comentario);
-                reference.setValue(c);
 
 
                 if(path != null){
@@ -138,7 +140,14 @@ public class Main extends AppCompatActivity {
                         StorageReference ref = storage.getReference().child("comments").child(c.getId());
                         FileInputStream file = new FileInputStream(new File(path));
                         //Sube la foto
-                        ref.putStream(file);
+                        ref.putStream(file).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                if (task.isSuccessful()){
+                                    reference.setValue(c);
+                                }
+                            }
+                        });
                     }catch (FileNotFoundException ex){
 
                     }
