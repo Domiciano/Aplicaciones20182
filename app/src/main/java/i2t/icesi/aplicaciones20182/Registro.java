@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class Registro extends AppCompatActivity {
     private EditText et_email;
     private EditText et_pass;
     private Button btn_reg;
+    private TextView has_account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class Registro extends AppCompatActivity {
         et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_pass);
         btn_reg = findViewById(R.id.btn_reg);
-
+        has_account = findViewById(R.id.has_account);
 
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +66,14 @@ public class Registro extends AppCompatActivity {
             }
         });
 
-        //DatabaseReference reference = db.getReference().child("estudiantes");
-        //reference.setValue("Cristian");
+        has_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Registro.this, Login.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
 
 

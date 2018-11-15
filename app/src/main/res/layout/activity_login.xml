@@ -3,6 +3,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:padding="40dp"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <EditText
@@ -21,7 +22,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ingresar"
+        android:layout_marginTop="20dp"
         android:id="@+id/btn_login"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No tengo aún una cuenta"
+        android:layout_marginTop="40dp"
+        android:textSize="20sp"
+        android:id="@+id/no_account"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Olvidé mi contraseña"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:id="@+id/pass_forgot"/>
 
 
 </LinearLayout>

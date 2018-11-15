@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,8 @@ public class Login extends AppCompatActivity {
     private EditText et_email;
     private EditText et_pass;
     private Button btn_login;
+    private TextView no_account;
+    private TextView pass_forgot;
 
     FirebaseAuth auth;
 
@@ -33,7 +36,8 @@ public class Login extends AppCompatActivity {
         et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_pass);
         btn_login = findViewById(R.id.btn_login);
-
+        no_account = findViewById(R.id.no_account);
+        pass_forgot = findViewById(R.id.pass_forgot);
 
         if(auth.getCurrentUser() != null){
             Intent i = new Intent(this, Main.class);
@@ -47,6 +51,23 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loginUsuario(et_email.getText().toString(), et_pass.getText().toString());
+            }
+        });
+
+        no_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Login.this, Registro.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        pass_forgot. setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Login.this, PassForgot.class);
+                startActivity(i);
             }
         });
 
