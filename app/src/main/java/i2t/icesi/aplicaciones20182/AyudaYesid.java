@@ -38,6 +38,9 @@ public class AyudaYesid extends AppCompatActivity {
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                //AQUI PUSE DIRECTAMENTE EL NOMBRE DE LA FOTO CONOCIDA, TIENE EL JPG PORQUE ASÍ LA SUBI
+                //SI USTEDES LA SUBIERON SIN EXTENSIÓN NO HAY PROBLEMA
                 StorageReference imagen = storage.getReference().child("comments").child("yesid.jpg");
                 imagen.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
