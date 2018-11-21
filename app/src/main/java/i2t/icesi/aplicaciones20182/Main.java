@@ -49,6 +49,7 @@ public class Main extends AppCompatActivity {
     Adaptador adaptador;
 
     Button btn_agregarfoto;
+    Button ayuda_yesid;
     ImageView img_foto;
 
     private String path;
@@ -82,11 +83,20 @@ public class Main extends AppCompatActivity {
         img_foto = findViewById(R.id.img_foto);
 
         btn_comentar = findViewById(R.id.btn_comentar);
+        ayuda_yesid = findViewById(R.id.ayuda_yesid);
         et_comentario = findViewById(R.id.et_comentario);
         lista_comentarios = findViewById(R.id.lista_comentarios);
         adaptador = new Adaptador(this);
         lista_comentarios.setAdapter(adaptador);
 
+
+        ayuda_yesid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Main.this, AyudaYesid.class);
+                startActivity(i);
+            }
+        });
 
         DatabaseReference comentarios_ref = db.getReference().child("comentarios");
 

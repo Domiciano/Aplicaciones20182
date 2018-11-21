@@ -27,7 +27,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".PassForgot"></activity>
+        <activity android:name=".PassForgot" />
+        <activity android:name=".AyudaYesid"></activity>
     </application>
 
 </manifest>

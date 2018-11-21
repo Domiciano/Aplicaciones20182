@@ -23,6 +23,12 @@
             android:id="@+id/btn_comentar"
             android:text="COMENTAR"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ayuda_yesid"
+            android:text="A"/>
 
 
     </LinearLayout>
